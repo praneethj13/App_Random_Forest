@@ -1,0 +1,35 @@
+.row-fluid {
+    padding-left: 285px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.row-fluid .span4 { 
+    position: relative;
+    float:left;
+    width: 275px;
+    right: 285px;
+    margin-right: -275px;
+}
+.row-fluid .span8 {
+    float: right;
+    position: relative;
+    padding-left: 7px;
+    padding-right: 7px;
+    width: 100%;
+}
+.well { 
+    padding-left: 7px;
+    padding-right: 7px; 
+    margin-top: 0px;
+    margin-bottom: 7px; 
+    width: auto; 
+}
+textarea, .jslider, select{
+    width: 100%;
+}
+input{
+    width: 230px;
+}
+.dlButton {
+    width: 160px;
+}
