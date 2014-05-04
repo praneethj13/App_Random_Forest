@@ -72,10 +72,3 @@ rf_prox_data1 <- reactive({
   } else v <- NULL
   v
 })
-
-
-
-
-
-
-

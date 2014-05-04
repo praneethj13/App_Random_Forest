@@ -7,6 +7,7 @@ shinyServer(function(input, output, session) {
   source("server_Tab1_Reactives and Output.R", local = TRUE)
   source("server_Tab2_1_Dynamic UI.R", local = TRUE)
   source("server_Tab2_1_Reactives.R", local = TRUE)
+  source("server_Tab3.R", local = TRUE)
   
   output$train_accuracy_plot <- renderPlot({
     input$go_model
@@ -140,3 +141,4 @@ shinyServer(function(input, output, session) {
   )
   
 })
+

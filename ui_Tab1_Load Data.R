@@ -24,13 +24,13 @@ tabPanel(
       
       p("Please keep", span("Resp ID & Cluster ID", style="color:red"), "variables first,",
         "followed by demographics & other variables."),
-      # End Comments
       
       tags$hr(),
       p(strong("Random Forest"), " is one of the top regression/classification model, 
           widely used across several industries. Presently it is the defacto model used for 
           all segment classification(Seg Ident Classification) projects.")
     ),
+    
     # Data shown in the main panel
     mainPanel(dataTableOutput("dataTable"))
   )

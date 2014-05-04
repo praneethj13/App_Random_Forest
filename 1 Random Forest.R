@@ -19,5 +19,10 @@ rf_model1 <- function(data, train_size , var_clus, rf_ntree, rf_mtry){
   rf_model_normal <- randomForest(x = x_train, y = y_train, xtest = x_test, ytest = y_test,
                                   ntree = rf_ntree, mtry = rf_mtry, importance = TRUE,
                                   proximity = TRUE)
+  # Adding data to the model
+  ln <- length(rf_model_normal)
+  rf_model_normal[[ln+1]] <- data
+  names(rf_model_normal)[ln+1] <- "org_data"
+  
   return(rf_model_normal) # Return random forest object
 }
