@@ -46,9 +46,9 @@ tabPanel(
         ## Download
         bsCollapsePanel(
           "Download",
-          downloadButton('downloadModel', 'Download RF Model', class="dlButton"),
+          downloadButton('downloadModel', 'Download RF Model', class="dl_btn"),
           br(),
-          downloadButton('dl_All', 'Download Plots(PDF)', class="dlButton")),
+          downloadButton('dl_All', 'Download Plots(PDF)', class="dl_btn")),
         
         multiple = FALSE)
       
