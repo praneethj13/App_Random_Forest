@@ -1,14 +1,25 @@
-# Load libraries -------------------------------------------------------------------
-library(shiny)
-library(shinyBS)
-library(randomForest) # Non-Parametric Model
-library(ggplot2)   # Main Graphics
-library(caret)     # Main Analysis
-library(grid)      # Support for Graphics
-library(gridExtra) # Support for Graphics
-library(scales)    # Support for Graphics
-library(reshape2)  # Data Transformation
-library(plyr)      # Data Transformation
+## Load libraries -------------------------------------------------------------------
+
+# This function tests & loads packages required
+pkgTest <- function(x)
+{
+  if (!require(x, character.only = TRUE))
+  {
+    install.packages(x, dep=TRUE)
+    if(!require(x, character.only = TRUE)) stop("Package not found")
+  }
+}
+
+pkgTest("shiny")
+pkgTest("shinyBS")
+pkgTest("randomForest") # Non-Parametric Model
+pkgTest("ggplot2")   # Main Graphics
+pkgTest("caret")     # Main Analysis
+pkgTest("grid")      # Support for Graphics
+pkgTest("gridExtra") # Support for Graphics
+pkgTest("scales")    # Support for Graphics
+pkgTest("reshape2")  # Data Transformation
+pkgTest("plyr")      # Data Transformation
 
 # Load Random Forest Model
 source("1 Random Forest.R")
