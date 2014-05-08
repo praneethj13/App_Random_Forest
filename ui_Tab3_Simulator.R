@@ -11,26 +11,21 @@ tabPanel(
         
         # Download Original Data & New Data Format
         bsCollapsePanel(
-          "Download Original Data",
-          downloadButton("dl_org_data", label = "Original Data", class = "dl_btn"),
-          hr(),
-          downloadButton("dl_data_format", label = "New Data Format", class = "dl_btn")
+          "Upload New Data",
+          fileInput("file_new_data", "Upload data",
+                    accept = c("text/csv",
+                               "text/comma-separated-values",
+                               "text/tab-separated-values",
+                               "text/plain",
+                               ".csv",
+                               ".tsv")
+          )
         ),
-        
-        bsCollapsePanel(
-          "Download Predicted Data",
-          downloadButton("dl_pred_data", label = "Predicted Data", class = "dl_btn")
-        ),
-        
         multiple = FALSE)
     ),
     
     mainPanel(
-      tabsetPanel(type = "pills",
-        tabPanel("Original Data", dataTableOutput("org_data_table")),
-        tabPanel("Predicted Data", dataTableOutput("pred_data_table"))
-      )
-      
+      uiOutput("ui_tab3")
     )
   )
 )
