@@ -8,11 +8,9 @@ tabPanel(
       bsCollapse(
         
         ## Data Selection
-        bsCollapsePanel('Data Selection', 
+        bsCollapsePanel('Data Selection',
                         uiOutput("dataSelection")), 
-        
 
-        
         ## Model Selection (UI)
         bsCollapsePanel('Model Selection', uiOutput("modelInputs"),
                         bsActionButton("go_model", "Build RF model", block = TRUE)),

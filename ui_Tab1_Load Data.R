@@ -6,7 +6,7 @@ tabPanel(
     sidebarPanel(
       tags$head(tags$link(rel="stylesheet", type="text/css", href="style.css")),
       
-      fileInput("file1", "Upload respondent level data",
+      fileInput("file1", "Upload data",
                 accept = c("text/csv",
                            "text/comma-separated-values",
                            "text/tab-separated-values",
@@ -15,6 +15,8 @@ tabPanel(
                            ".tsv"
                 )
       ),
+      bsPopover(id="file1", title="", content="Upload the respondent level data", 
+                placement="right", trigger="hover"),
       
       # Comments on Uploading CSV File
       p("Load data in", code(".csv or .tab"), "format only.",

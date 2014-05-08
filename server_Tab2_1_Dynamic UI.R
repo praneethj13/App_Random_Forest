@@ -7,17 +7,30 @@ output$dataSelection <- renderUI( {
 
 dynamicUi_ds <- reactive({    
   list(
-    selectInput(inputId = "var_Remove", label = "Select ID Variable", 
-                choices = varNames(), selected = varNames()[1], 
-                multiple = TRUE, selectize = TRUE),
+    tags$div(
+      selectInput(inputId = "var_Remove", label = "Select ID Variable", 
+                  choices = varNames(), selected = varNames()[1], 
+                  multiple = TRUE, selectize = TRUE),
+      
+      
+      selectInput(inputId = "var_Clus", label ="Select Clus Variable", 
+                  choices = varNames(), selected = varNames()[2], 
+                  selectize = TRUE),
+      
+      
+      selectInput(inputId = "var_Keep", label = "Select/Unselect independent variables..", 
+                  choices = varNames(), selected = varNames()[-c(1, 2)],
+                  multiple = TRUE, selectize = TRUE)),
+    # Tooltip
+    bsPopover(id="var_Remove", title="", "Select Respondent Id", 
+              "top", "click"),
+    # Tooltip
+    bsPopover(id="var_Clus", title="", "Select Class(Cluster) variable", 
+              "left", "click"),
+    # Tooltip
+    bsPopover(id="var_Keep", title="", "Select all dependent variables. You can select/deselect from this list", 
+              "top", "click"),
     
-    selectInput(inputId = "var_Clus", label ="Select Clus Variable", 
-                choices = varNames(), selected = varNames()[2], 
-                selectize = TRUE),
-    
-    selectInput(inputId = "var_Keep", label = "Select/Unselect independent variables..", 
-                choices = varNames(), selected = varNames()[-c(1, 2)],
-                multiple = TRUE, selectize = TRUE),
     br(), br(), br()
   )
 })
