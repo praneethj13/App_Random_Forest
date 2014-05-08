@@ -6,6 +6,8 @@ train_rows <- function(data, train_size){
   return(x)
 }
 
+set.seed(1000)
+
 # Random Forest Model
 rf_model1 <- function(data, train_size , var_clus, rf_ntree, rf_mtry){
   

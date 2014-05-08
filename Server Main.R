@@ -32,6 +32,8 @@ fs <- 20
 fs.sub <- 0
 cs <- 6
 cs.sub <- 1
+ts <- 30
+ts.pdf <- 20
 
 # Loads Data Preparation Functions
 source("2 Data Preparation.R")

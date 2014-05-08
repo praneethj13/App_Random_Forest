@@ -81,38 +81,23 @@ dynamic_Plots <- reactive({
     id <- input$nlp
     if(id=="acc_train"){
       x <- tabPanel("Accuracy (Train)", 
-                    div(class="row-fluid",
-                        div(class="span9", uiOutput("tp.acc_train")),
-                        div(class="span3", downloadButton("dl_train_accuracy_plot","Download Plot"))
-                    ),
+                    div(class="span3", downloadButton("dl_train_accuracy_plot","Download Plot")),
                     plotOutput("train_accuracy_plot", height="auto"), value="tp.acc_train")
     } else if(id=="acc_test"){
       x <- tabPanel("Accuracy (Test)", 
-                    div(class="row-fluid",
-                        div(class="span9", uiOutput("tp.acc_test")),
-                        div(class="span3", downloadButton("dl_test_accuracy_plot","Download Plot"))
-                    ),
+                    div(class="span3", downloadButton("dl_test_accuracy_plot","Download Plot")),
                     plotOutput("test_accuracy_plot", height="auto"), value="tp.acc_test")
     } else if(id=="impGini"){
       x <- tabPanel("Importance: Gini", 
-                    div(class="row-fluid",
-                        div(class="span9", uiOutput("tp.impGini")),
-                        div(class="span3", downloadButton("dl_imp_plot","Download Plot"))
-                    ),
+                    div(class="span3", downloadButton("dl_imp_plot","Download Plot")),
                     plotOutput("imp_plot", height="auto"), value="tp.impGini")
     } else if(id=="impTable"){
       x <- tabPanel("Importance: Table", 
-                    div(class="row-fluid",
-                        div(class="span9", uiOutput("tp.impTable")),
-                        div(class="span3", downloadButton("dl_imp_table","Download Plot"))
-                    ),
+                    div(class="span3", downloadButton("dl_imp_table","Download Plot")),
                     plotOutput("imp_table", height="auto"), value="tp.impTable")
     } else if(id=="mds"){
       x <- tabPanel("2-D MDS", 
-                    div(class="row-fluid",
-                        div(class="span9", uiOutput("tp.mds")),
-                        div(class="span3", downloadButton("dl_mds_plot","Download Plot"))
-                    ),
+                    div(class="span3", downloadButton("dl_mds_plot","Download Plot")),
                     plotOutput("mds_plot", height="auto"), value="tp.mds")
     }
     x
