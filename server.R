@@ -16,7 +16,8 @@ shinyServer(function(input, output, session) {
         if(input$go_model!=0)
           classAccuracyPlot(accuracy = train_accuracy(), 
                             confusion_table = train_confusion_table(), 
-                            celltextsize = cs, fontsize = fs)
+                            celltextsize = cs, fontsize = fs, titlesize = ts, 
+                            my_title = "Classification Accuracy & Confusion Table(Train)")
     )
   }, height=1000, width=1600)
   
@@ -27,7 +28,9 @@ shinyServer(function(input, output, session) {
       pdf(file = file, width=11, height=8.5)
       classAccuracyPlot(accuracy = train_accuracy(), 
                         confusion_table = train_confusion_table(), 
-                        celltextsize = cs - cs.sub, fontsize = fs - fs.sub)
+                        celltextsize = cs - cs.sub, fontsize = fs - fs.sub, 
+                        titlesize = ts.pdf, 
+                        my_title = "Classification Accuracy & Confusion Table(Train)")
       dev.off()
     }
   )
@@ -39,7 +42,8 @@ shinyServer(function(input, output, session) {
         if(input$go_model!=0)
           classAccuracyPlot(accuracy = test_accuracy(), 
                             confusion_table = test_confusion_table(), 
-                            celltextsize = cs, fontsize = fs)
+                            celltextsize = cs, fontsize = fs, titlesize = ts, 
+                            my_title = "Classification Accuracy & Confusion Table(Test)")
     )
   }, height=1000, width=1600)
   
@@ -49,7 +53,9 @@ shinyServer(function(input, output, session) {
       pdf(file = file, width=11, height=8.5)
       classAccuracyPlot(accuracy = test_accuracy(), 
                         confusion_table = test_confusion_table(), 
-                        celltextsize = cs - cs.sub, fontsize = fs - fs.sub)
+                        celltextsize = cs - cs.sub, fontsize = fs - fs.sub, 
+                        titlesize = ts.pdf, 
+                        my_title = "Classification Accuracy & Confusion Table(Test)")
       dev.off()
     }
   )
@@ -59,7 +65,8 @@ shinyServer(function(input, output, session) {
     isolate(
       if(!is.null(input$go_model)) 
         if(input$go_model!=0)
-          importancePlot(rf_importance1(), ylb ="mdg", fontsize = fs)
+          importancePlot(rf_importance1(), ylb ="mdg", fontsize = fs, titlesize = ts, 
+                         my_title = "Variable importance Plot")
     )
   }, height=1000, width=1600)
   
@@ -67,7 +74,8 @@ shinyServer(function(input, output, session) {
     filename = 'Variable Importance Plot.pdf',
     content = function(file){
       pdf(file = file, width=11, height=8.5)
-      importancePlot(rf_importance1(), ylb ="mdg", fontsize = fs - fs.sub)
+      importancePlot(rf_importance1(), ylb ="mdg", fontsize = fs - fs.sub, titlesize = ts.pdf, 
+                     my_title = "Variable importance Plot")
       dev.off()
     }
   )
@@ -78,7 +86,8 @@ shinyServer(function(input, output, session) {
       if(!is.null(input$go_model)) 
         if(input$go_model!=0)
           importanceTable(rf_importance1(), colnames(rf_importance1())[-1], 
-                          celltextsize = cs, fontsize = fs)
+                          celltextsize = cs, fontsize = fs, titlesize = ts, 
+                          my_title = "Variable Importance - All & Segment Level")
     )
   }, height=1000, width=1600)
   
@@ -87,7 +96,8 @@ shinyServer(function(input, output, session) {
     content = function(file){
       pdf(file = file, width=11, height=8.5)
       importanceTable(rf_importance1(), colnames(rf_importance1())[-1], 
-                      celltextsize = cs - cs.sub, fontsize = fs - fs.sub)
+                      celltextsize = cs - cs.sub, fontsize = fs - fs.sub, titlesize = ts.pdf, 
+                      my_title = "Variable Importance - All & Segment Level")
       dev.off()
     }
   )
@@ -97,7 +107,8 @@ shinyServer(function(input, output, session) {
     isolate(
       if(!is.null(input$go_model)) 
         if(input$go_model!=0)
-          mdsPlot(d = rf_prox_data1(), fontsize = fs)
+          mdsPlot(d = rf_prox_data1(), fontsize = fs, titlesize = ts, 
+                  my_title = "Multi Dimensional Scaling(MDS) Plot")
     )
   }, height=1000, width=1600)
   
@@ -105,7 +116,8 @@ shinyServer(function(input, output, session) {
     filename = 'MDS Plot.pdf',
     content = function(file){
       pdf(file = file, width=11, height=8.5)
-      mdsPlot(d = rf_prox_data1(), fontsize = fs - fs.sub)
+      mdsPlot(d = rf_prox_data1(), fontsize = fs - fs.sub, titlesize = ts.pdf, 
+              my_title = "Multi Dimensional Scaling(MDS) Plot")
       dev.off()
     }
   )
@@ -128,14 +140,19 @@ shinyServer(function(input, output, session) {
       pdf(file = file, width=20, height=12, onefile = TRUE)
       classAccuracyPlot(accuracy = train_accuracy(), 
                         confusion_table = train_confusion_table(), 
-                        celltextsize = cs - cs.sub, fontsize = fs - fs.sub)
+                        celltextsize = cs - cs.sub, fontsize = fs - fs.sub, titlesize = ts.pdf, 
+                        my_title = "Classification Accuracy & Confusion Table(Train)")
       classAccuracyPlot(accuracy = test_accuracy(), 
                         confusion_table = test_confusion_table(), 
-                        celltextsize = cs - cs.sub, fontsize = fs - fs.sub)
-      importancePlot(rf_importance1(), ylb ="mdg", fontsize = fs - fs.sub)
+                        celltextsize = cs - cs.sub, fontsize = fs - fs.sub, titlesize = ts.pdf, 
+                        my_title = "Classification Accuracy & Confusion Table(Test)")
+      importancePlot(rf_importance1(), ylb ="mdg", fontsize = fs - fs.sub, titlesize = ts.pdf, 
+                     my_title = "Variable importance Plot")
       importanceTable(rf_importance1(), colnames(rf_importance1())[-1], 
-                      celltextsize = cs - cs.sub, fontsize = fs - fs.sub)
-      mdsPlot(d = rf_prox_data1(), fontsize = fs - fs.sub)
+                      celltextsize = cs - cs.sub, fontsize = fs - fs.sub, titlesize = ts.pdf, 
+                      my_title = "Variable Importance - All & Segment Level")
+      mdsPlot(d = rf_prox_data1(), fontsize = fs - fs.sub, titlesize = ts.pdf, 
+              my_title = "Multi Dimensional Scaling(MDS) Plot")
       dev.off()
     }
   )
